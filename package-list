@@ -1,0 +1,6 @@
+org.magnos.solver
+org.magnos.solver.maze
+org.magnos.solver.npuzzle
+org.magnos.solver.pegs
+org.magnos.solver.soduko
+org.magnos.solver.tetravex
