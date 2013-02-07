@@ -35,14 +35,16 @@ board = new short[][] {
 	{0, 0, 0,/**/ 0, 0, 6,/**/ 0, 2, 0},
 	{0, 0, 3,/**/ 4, 1, 0,/**/ 0, 0, 0}
 };
-Board soduko = new Board(3, board);
+SodukoBoard soduko = new SodukoBoard(3, board);
 
-Solver<Move> solver = new Solver<Move>();
+Solver<SodukoMove> solver = new Solver<SodukoMove>();
 solver.setInitialState(soduko);
-solver.setRevisitStates(true);   	// True since there can never be duplicate states
+solver.setRevisitStates(true);    // True since there can never be duplicate states
 solver.setSaveParent(true);       // If you want a move-by-move history saved for each solution
 solver.solve();
 
 // All possible solutions for the given board
-List<Board> solutions = solver.getSolutions();
+List<SodukoBoard> solutions = solver.getSolutions();
+
+// If you provide an empty board, all possible Soduko boards will be created... I can't promise it will ever finish.
 ```
