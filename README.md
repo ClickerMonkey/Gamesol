@@ -42,7 +42,7 @@ public interface State<M>
 It is important to understand that gamesol is simply a tree traversing utility that performs either a depth or breadth first search, optionally saves move history through parent references, and can avoid duplicate states. 
 <i>The efficiency of the Solver is fully dependent on how you save your state, moves, and how you determine your next moves (the fewer and more precise moves the better)</i>
 
-Sudoko Example [Full Code](Examples/org/magnos/solver/soduko/Soduko.java)
+Sudoko Example ([Full Code](Examples/org/magnos/solver/soduko/Soduko.java))
 
 ```java
 // solve a 3-grid (9x9) puzzle
