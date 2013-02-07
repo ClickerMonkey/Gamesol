@@ -10,7 +10,7 @@ Solvers are included as example for the following games:
 - N-Puzzle [wiki](http://en.wikipedia.org/wiki/15_puzzle)
 - Peg Solitaire [wiki](http://en.wikipedia.org/wiki/Peg_solitaire)
 
-How do you use gamesol to solve your game?
+SO, How do you use gamesol to solve your game?
 
 There are two classes to implement: Move and State.
 
@@ -37,6 +37,10 @@ public interface State<M>
 - [Documentation](http://clickermonkey.github.com/gamesol/)
 - [Builds](https://github.com/ClickerMonkey/gamesol/blob/master/build)
 - [Examples](Examples//org/magnos/solver)
+
+<b>NOTICE</b>
+It is important to understand that gamesol is simply a tree traversing utility that performs either a depth or breadth first search, optionally saves move history through parent references, and can avoid duplicate states. 
+<i>The efficiency of the Solver is fully dependent on how you save your state, moves, and how you determine your next moves (the fewer and more precise moves the better)</i>
 
 Sudoko Example [Full Code](Examples/org/magnos/solver/soduko/Soduko.java)
 
