@@ -3,7 +3,7 @@ gamesol
 
 A generic game solving library in Java.
 
-Solvers are included as example for the following games:
+These Games are included as example:
 - Soduko [wiki](http://en.wikipedia.org/wiki/Soduko)
 - Mazes [wiki](http://en.wikipedia.org/wiki/Maze)
 - Tetravex [wiki](http://en.wikipedia.org/wiki/Tetravex)
