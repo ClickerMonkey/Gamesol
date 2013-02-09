@@ -4,7 +4,7 @@ gamesol
 A generic game solving library in Java.
 
 These Games are included as example:
-- Soduko [wiki](http://en.wikipedia.org/wiki/Soduko)
+- Sudoku [wiki](http://en.wikipedia.org/wiki/Sudoku)
 - Mazes [wiki](http://en.wikipedia.org/wiki/Maze)
 - Tetravex [wiki](http://en.wikipedia.org/wiki/Tetravex)
 - N-Puzzle [wiki](http://en.wikipedia.org/wiki/15_puzzle)
@@ -38,11 +38,12 @@ public interface State<M>
 - [Builds](https://github.com/ClickerMonkey/gamesol/blob/master/build)
 - [Examples](Examples//org/magnos/solver)
 
+
 <b>NOTICE</b>
 It is important to understand that gamesol is simply a tree traversing utility that performs either a depth or breadth first search, optionally saves move history through parent references, and can avoid duplicate states. 
 <i>The efficiency of the Solver is fully dependent on how you save your state, moves, and how you determine your next moves (the fewer and more precise moves the better)</i>
 
-Sudoko Example ([Full Code](Examples/org/magnos/solver/soduko/Soduko.java))
+Sudoku Example [Full Code](Examples/org/magnos/solver/sudoku/Sudoku.java)
 
 ```java
 // solve a 3-grid (9x9) puzzle
@@ -59,16 +60,16 @@ board = new short[][] {
 	{0, 0, 0,/**/ 0, 0, 6,/**/ 0, 2, 0},
 	{0, 0, 3,/**/ 4, 1, 0,/**/ 0, 0, 0}
 };
-SodukoBoard soduko = new SodukoBoard(3, board);
+SudokuBoard sudoku = new SudokuBoard(3, board);
 
-Solver<SodukoMove> solver = new Solver<SodukoMove>();
-solver.setInitialState(soduko);
+Solver<SudokuMove> solver = new Solver<SudokuMove>();
+solver.setInitialState(sudoku);
 solver.setRevisitStates(true);    // True since there can never be duplicate states
 solver.setSaveParent(true);       // If you want a move-by-move history saved for each solution
 solver.solve();
 
 // All possible solutions for the given board
-List<SodukoBoard> solutions = solver.getSolutions();
+List<SudokuBoard> solutions = solver.getSolutions();
 
-// If you provide an empty board, all possible Soduko boards will be created... I can't promise it will ever finish.
+// If you provide an empty board, all possible Sudoku boards will be created... I can't promise it will ever finish.
 ```

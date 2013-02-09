@@ -14,14 +14,14 @@
  * 				Open Software License (OSL 3.0)
  */
 
-package org.magnos.solver.soduko;
+package org.magnos.solver.sudoku;
 
-public class SodukoMove 
+public class SudokuMove 
 {
 	
 	public short x, y, number;
 	
-	public SodukoMove(short x, short y, short number) 
+	public SudokuMove(short x, short y, short number) 
 	{
 		this.x = x;
 		this.y = y;

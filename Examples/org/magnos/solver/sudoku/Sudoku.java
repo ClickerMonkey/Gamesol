@@ -14,25 +14,25 @@
  * 				Open Software License (OSL 3.0)
  */
 
-package org.magnos.solver.soduko;
+package org.magnos.solver.sudoku;
 
 import java.util.List;
 
 import org.magnos.solver.Solver;
-import org.magnos.solver.soduko.SodukoBoard;
-import org.magnos.solver.soduko.SodukoMove;
+import org.magnos.solver.sudoku.SudokuBoard;
+import org.magnos.solver.sudoku.SudokuMove;
 
 
 
-public class Soduko 
+public class Sudoku 
 {
 
 	public static void main(String[] args)
 	{
-		new Soduko();
+		new Sudoku();
 	}
 	
-	public Soduko() 
+	public Sudoku() 
 	{
 		// http://www.easton.me.uk/sudoku/sizes.php
 		// http://www.chessandpoker.com/sudoku-strategy-guide.html
@@ -102,14 +102,14 @@ public class Soduko
 	
 	private void solve(int n, short[][] board) 
 	{
-		SodukoBoard soduko = new SodukoBoard(n, board);
+		SudokuBoard sudoku = new SudokuBoard(n, board);
 
 		System.out.format("Initial %d x %d Board {\n", n, n);
-		System.out.print(soduko);
+		System.out.print(sudoku);
 		System.out.println("}");
 		
-		Solver<SodukoMove> solver = new Solver<SodukoMove>();
-		solver.setInitialState(soduko);
+		Solver<SudokuMove> solver = new Solver<SudokuMove>();
+		solver.setInitialState(sudoku);
 		// True since there can never be duplicate states
 		solver.setRevisitStates(true);
 		solver.solve();
@@ -121,7 +121,7 @@ public class Soduko
 		System.out.format("States pooled: %d\n", solver.getUniqueStates());
 		System.out.format("States branched: %d\n", solver.getStatesDeviated());
 		
-		List<SodukoBoard> solutions = solver.getSolutions();
+		List<SudokuBoard> solutions = solver.getSolutions();
 		
 		System.out.format("Solutions (%d) {\n", solutions.size());
 		for (int i = 0; i < solutions.size(); i++) {

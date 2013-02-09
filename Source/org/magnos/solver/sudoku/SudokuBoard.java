@@ -14,7 +14,7 @@
  * 				Open Software License (OSL 3.0)
  */
 
-package org.magnos.solver.soduko;
+package org.magnos.solver.sudoku;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +26,7 @@ import org.magnos.solver.State;
 
 
 
-public class SodukoBoard extends AbstractState<SodukoMove> implements Cloneable
+public class SudokuBoard extends AbstractState<SudokuMove> implements Cloneable
 {
 
 	private int cellSize;
@@ -34,11 +34,11 @@ public class SodukoBoard extends AbstractState<SodukoMove> implements Cloneable
 	private int filled;
 	private short[][] board;
 
-	private SodukoBoard()
+	private SudokuBoard()
 	{
 	}
 
-	public SodukoBoard( int n, short[][] initialBoard )
+	public SudokuBoard( int n, short[][] initialBoard )
 	{
 		cellSize = n;
 		size = n * n;
@@ -58,9 +58,9 @@ public class SodukoBoard extends AbstractState<SodukoMove> implements Cloneable
 	}
 
 	@Override
-	public Iterator<SodukoMove> getMoves()
+	public Iterator<SudokuMove> getMoves()
 	{
-		List<SodukoMove> moves = new ArrayList<SodukoMove>();
+		List<SudokuMove> moves = new ArrayList<SudokuMove>();
 
 		// rows[x] are all numbers that exist in row x
 		byte rows[][] = new byte[size][size];
@@ -150,7 +150,7 @@ public class SodukoBoard extends AbstractState<SodukoMove> implements Cloneable
 			if (min[i - 1] == 0)
 			{
 				// Add the move as a possibility.
-				moves.add( new SodukoMove( minX, minY, i ) );
+				moves.add( new SudokuMove( minX, minY, i ) );
 			}
 		}
 
@@ -158,9 +158,9 @@ public class SodukoBoard extends AbstractState<SodukoMove> implements Cloneable
 	}
 
 	@Override
-	public State<SodukoMove> getCopy()
+	public State<SudokuMove> getCopy()
 	{
-		SodukoBoard copy = new SodukoBoard();
+		SudokuBoard copy = new SudokuBoard();
 		copy.size = size;
 		copy.filled = filled;
 		copy.cellSize = cellSize;
@@ -175,7 +175,7 @@ public class SodukoBoard extends AbstractState<SodukoMove> implements Cloneable
 	}
 
 	@Override
-	public void addMove( SodukoMove move )
+	public void addMove( SudokuMove move )
 	{
 		board[move.y][move.x] = move.number;
 		filled++;
