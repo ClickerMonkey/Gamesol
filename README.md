@@ -34,8 +34,8 @@ public interface State<M>
 <b>Move</b> is a possible move that can be made in your game and has no predefined interface, a Move can be anything chosen by the State implementation.
 
 <b>Links</b>:
-- [Documentation](http://clickermonkey.github.com/gamesol/)
-- [Builds](https://github.com/ClickerMonkey/gamesol/blob/master/build)
+- [Documentation](http://gh.magnos.org/?r=http://clickermonkey.github.com/gamesol/)
+- [Builds](http://gh.magnos.org/?r=https://github.com/ClickerMonkey/gamesol/blob/master/build)
 - [Examples](Examples//org/magnos/solver)
 
 
