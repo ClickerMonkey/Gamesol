@@ -1,6 +1,8 @@
 gamesol
 =======
 
+![Stable](http://i4.photobucket.com/albums/y123/Freaklotr4/stage_stable.png)
+
 A generic game solving library in Java.
 
 These Games are included as example:
