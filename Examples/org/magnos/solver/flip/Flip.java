@@ -18,6 +18,7 @@ package org.magnos.solver.flip;
 
 import java.util.List;
 
+import org.magnos.solver.ConcurrentSolver;
 import org.magnos.solver.Solver;
 import org.magnos.solver.State;
 
@@ -35,7 +36,7 @@ public class Flip
 	{
 		int[][] board;
 
-		// Hard Level 1
+		// Hard Level 1 (183ms)
 		board = new int[][] {
 			{0, 0, 1, 1, 1, 0, 0},
 			{0, 0, 1, 0, 1, 0, 0},
@@ -46,9 +47,9 @@ public class Flip
 			{0, 0, 1, 1, 1, 0, 0}
 		};
 		
-		solve(board, 2, 2, 30);
+		solve(board, 2, 2, 30, 1);
 
-		// Hard Level 2
+		// Hard Level 2 (135ms)
 		board = new int[][] {
 			{1, 2, 1, 1, 1, 1, 1},
 			{1, 0, 1, 0, 1, 0, 1},
@@ -59,9 +60,9 @@ public class Flip
 			{1, 1, 1, 0, 1, 1, 1}
 		};
 		
-		solve(board, 1, 0, 38);
+		solve(board, 1, 0, 38, 1);
 		
-		// Hard Level 4
+		// Hard Level 4 (13ms)
 		board = new int[][] {
 			{1, 1, 1, 1, 1},
 			{1, 0, 2, 0, 0},
@@ -70,18 +71,59 @@ public class Flip
 			{1, 1, 2, 1, 1}
 		};
 		
-		solve(board, 0, 4, 22);
+		solve(board, 0, 4, 22, 1);
+		
+		// Hard Level 21 (174ms)
+		board = new int[][] {
+			{0, 1, 1, 2, 1, 1, 0},
+			{1, 1, 0, 2, 0, 1, 1},
+			{1, 0, 0, 2, 0, 0, 1},
+			{1, 1, 1, 2, 1, 1, 1},
+			{0, 0, 0, 1, 0, 0, 1},
+			{0, 0, 0, 1, 0, 1, 1},
+			{0, 0, 0, 1, 1, 1, 0}
+		};
+		
+		solve(board, 3, 3, 32, 1);
+		
+		// Hard Level 22 (399ms)
+		board = new int[][] {
+			{0, 1, 2, 1, 1, 1, 0},
+			{2, 1, 2, 1, 2, 1, 2},
+			{0, 0, 1, 0, 1, 0, 0},
+			{0, 0, 1, 0, 1, 0, 0},
+			{2, 1, 2, 0, 2, 1, 2},
+			{0, 0, 1, 1, 1, 0, 0},
+			{0, 0, 2, 1, 2, 0, 0},
+			{0, 0, 0, 2, 0, 0, 0}
+		};
+		
+		solve(board, 3, 7, 27, 1);
+
+		// Hard Level 23 (hasn't finished yet)
+		board = new int[][] {
+			{1, 1, 1, 1, 1, 0, 0},
+			{1, 1, 1, 1, 1, 1, 0},
+			{1, 1, 0, 1, 0, 1, 0},
+			{1, 1, 0, 2, 1, 1, 1},
+			{1, 1, 0, 1, 0, 1, 1},
+			{1, 1, 1, 1, 1, 0, 1},
+			{1, 1, 1, 1, 1, 1, 1},
+			{1, 1, 0, 0, 1, 0, 0}
+		};
+		
+		solve(board, 3, 3, 45, 8);
 	}
 	
-	private void solve(int[][] board, int cx, int cy, int ideal) 
+	private void solve(int[][] board, int cx, int cy, int ideal, int workers) 
 	{
 		FlipPuzzle flip = new FlipPuzzle( cx, cy, board );
-			
-		Solver<FlipMove> solver = new Solver<FlipMove>();
+		
+		Solver<FlipMove> solver = workers <= 1 ? new Solver<FlipMove>() : new ConcurrentSolver<FlipMove>( workers );
 		
 		solver.setInitialState(flip);
-		// Breadth-First-Search
-		solver.setBreadthFirst(true);
+		// Depth-First-Search
+		solver.setBreadthFirst(false);
 		// States will never be revisited
 		solver.setRevisitStates(false);
 		// Set to false to find all paths

@@ -34,51 +34,51 @@ public class Solver<M>
 {
 
 	// Save the path to each solution?
-	private boolean saveParent = false;
+	protected boolean saveParent = false;
 
 	// Solve using a breadth-first-search?
-	private boolean breadthFirst = false;
+	protected boolean breadthFirst = false;
 
 	// Find the solution with the minimal number of moves?
-	private boolean minimalMoves = false;
+	protected boolean minimalMoves = false;
 
 	// Can we revisit a state? Or should we keep track to avoid repitition.
-	private boolean revisitStates = false;
+	protected boolean revisitStates = false;
 
 	// The maximum number of solutions to search for.
-	private int maxSolutions = Integer.MAX_VALUE;
+	protected int maxSolutions = Integer.MAX_VALUE;
 
 	// The maximum number of moves that can be made for a solution.
-	private int maxDepth = Integer.MAX_VALUE;
+	protected int maxDepth = Integer.MAX_VALUE;
 
 	// The initial state to solve from.
-	private State<M> initial;
+	protected State<M> initial;
 
 	// The list of solutions.
-	private List<State<M>> solutions;
+	protected List<State<M>> solutions;
 
 	/** Statistics **/
 
 	// How many states were visited in the last solution?
-	private long statesVisited;
+	protected long statesVisited;
 
 	// How many states were created total?
-	private long statesCreated;
+	protected long statesCreated;
 
 	// How many states were reached in different paths?
-	private long statesDuplicated;
+	protected long statesDuplicated;
 
 	// How many branches were there?
-	private long statesDeviated;
+	protected long statesDeviated;
 	
 	// How many states could be skipped because of remaining moves?
-	private long statesShort;
+	protected long statesShort;
 
 	// When solve started.
-	private long solveStart;
+	protected long solveStart;
 
 	// When solve ended.
-	private long solveEnd;
+	protected long solveEnd;
 
 	/**
 	 * Instantiates a new Solver.
