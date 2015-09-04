@@ -26,6 +26,10 @@ import org.magnos.solver.State;
 /**
  * The state of a Flip Puzzle.
  * 
+ * The game can be found here:
+ * https://play.google.com/store/apps/details?id=com.FriendsTreehouseGames.Flip&hl=en
+ * https://itunes.apple.com/us/app/flip-puzzle-game/id736760895?mt=8
+ * 
  * @author Philip Diffenderfer
  *
  */
