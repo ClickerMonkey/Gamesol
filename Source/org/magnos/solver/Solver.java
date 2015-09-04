@@ -70,6 +70,9 @@ public class Solver<M>
 
 	// How many branches were there?
 	private long statesDeviated;
+	
+	// How many states could be skipped because of remaining moves?
+	private long statesShort;
 
 	// When solve started.
 	private long solveStart;
@@ -202,6 +205,16 @@ public class Solver<M>
 	{
 		return statesDeviated;
 	}
+	
+	/**
+	 * How many states could be skipped because of remaining moves.
+	 * 
+	 * @return How many states could be skipped because of remaining moves.
+	 */
+	public long getStatesShort()
+	{
+		return statesShort;
+	}
 
 	/**
 	 * How many unique states were created.
@@ -254,6 +267,7 @@ public class Solver<M>
 		statesVisited = 0;
 		statesDuplicated = 0;
 		statesDeviated = 0;
+		statesShort = 0;
 
 		// Clear initial state
 		initial.setParent( null );
@@ -300,6 +314,14 @@ public class Solver<M>
 			// Only branch if the depth of this state is less then maxDepth;
 			else if (current.getDepth() < maxDepth)
 			{
+				// If the state has a number of remaining moves and it's not going to get there in time, skip it.
+				int remaining = current.getRemainingMoves();
+				if ( remaining != -1 && current.getDepth() + remaining > maxDepth )
+				{
+					statesShort++;
+					continue;
+				}
+				
 				// Retrieve all possible moves in this state.
 				Iterator<M> moves = current.getMoves();
 				int moveCount = 0;

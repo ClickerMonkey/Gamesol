@@ -14,53 +14,27 @@
  * 				Open Software License (OSL 3.0)
  */
 
-package org.magnos.solver;
+package org.magnos.solver.flip;
 
 /**
- * An abstract state which implements the depth and parent state.
+ * A possible move in flip puzzle.
  * 
  * @author Philip Diffenderfer
- * 
- * @param <M>
- *        The move type.
+ *
  */
-public abstract class AbstractState<M> implements State<M>
+public enum FlipMove
 {
-
-	// The depth of the state
-	private int depth;
-
-	// The parent state
-	private State<M> parent;
-
-	@Override
-	public int getDepth()
-	{
-		return depth;
-	}
-
-	@Override
-	public State<M> getParent()
-	{
-		return parent;
-	}
-
-	@Override
-	public void setDepth( int depth )
-	{
-		this.depth = depth;
-	}
-
-	@Override
-	public void setParent( State<M> parent )
-	{
-		this.parent = parent;
-	}
+	UP		( 0, -1),
+	DOWN	( 0,  1),
+	LEFT	(-1,  0),
+	RIGHT	( 1,  0);
 	
-	@Override
-	public int getRemainingMoves()
+	public final int dx;
+	public final int dy;
+	
+	private FlipMove(int dx, int dy)
 	{
-		return -1;
+		this.dx = dx;
+		this.dy = dy;
 	}
-
 }

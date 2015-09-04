@@ -87,5 +87,16 @@ public interface State<M>
 	 * true (same applies for B.equals(A)).
 	 */
 	public Object getHash();
+	
+	/**
+	 * Tries to estimate the minimum number of remaining moves until the state
+	 * is solved. If this can't be calculated then -1 should be returned. This
+	 * is especially useful when you set a maximum search depth in a Solver
+	 * and you want to weed out states that don't have a chance being solvable
+	 * in time.
+	 * 
+	 * @return
+	 */
+	public int getRemainingMoves();
 
 }
